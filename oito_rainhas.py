@@ -34,8 +34,11 @@ def checking_queen(chessboard):
         if queens == 1:
             print(f'Apenas uma rainha na linha {line+1}')
         else:
-            print (f'Nenhuma ou mais de uma rainha na linha {line+1}')
-            only_one_queen = 1
+            if queens == 0:
+                print (f'Nenhuma rainha na linha {line+1}')
+            else:
+                print (f'Mais de uma rainha na linha {line+1}')
+                only_one_queen = 1
             
     # validação de 1 rainha por coluna
     for column in range (0, n):       
@@ -47,8 +50,11 @@ def checking_queen(chessboard):
         if queens == 1:
              print(f'Apenas uma rainha na coluna {column+1}')
         else:
-            print (f'Nenhuma ou mais de uma rainha na coluna {column+1}')
-            only_one_queen = 1
+            if queens == 0:
+                print (f'Nenhuma rainha na coluna {column+1}')
+            else:
+                print (f'Mais de uma rainha na coluna {column+1}')
+                only_one_queen = 1
             
     
     diagonal_list = []
@@ -63,9 +69,11 @@ def checking_queen(chessboard):
             if queens == 1:
                 print(f'Apenas uma rainha na diagonal {d+1}')
             else:
-                print (f'Nenhuma ou mais de uma rainha na diagonal {d+1}')
-                only_one_queen = 1
-                continue
+                if queens == 0:
+                    print (f'Nenhuma rainha na diagonal {d+1}')
+                else:
+                    print (f'Mais de uma rainha na diagonal {d+1}')
+                    only_one_queen = 1
         else:
             diagonal = []
             j = 0
@@ -85,8 +93,11 @@ def checking_queen(chessboard):
             if queens == 1:
                 print(f'Apenas uma rainha na diagonal {d+1}')
             else:
-                print (f'Nenhuma ou mais de uma rainha na diagonal {d+1}')
-                only_one_queen = 1
+                if queens == 0:
+                    print (f'Nenhuma rainha na diagonal {d+1}')
+                else:
+                    print (f'Mais de uma rainha na diagonal {d+1}')
+                    only_one_queen = 1
 
     # continuação da validação de 1 rainha por diagonal secundária
     # segundo loop, apenas na última linha
@@ -105,8 +116,11 @@ def checking_queen(chessboard):
             if queens == 1:
                 print(f'Apenas uma rainha na diagonal secundária {column_j + line + 1}')
             else:
-                print (f'Nenhuma ou mais de uma rainha na diagonal secundária {column_j + line + 1}')
-                only_one_queen = 1
+                if queens == 0:
+                    print (f'Nenhuma rainha na diagonal secundária {column_j + line + 1}')
+                else:
+                    print (f'Mais de uma rainha na diagonal secundária {column_j + line + 1}')
+                    only_one_queen = 1
 
 
     diagonal_list_main = []
@@ -123,8 +137,11 @@ def checking_queen(chessboard):
             if queens == 1:
                 print(f'Apenas uma rainha na diagonal principal 1')
             else:
-                print (f'Nenhuma ou mais de uma rainha na diagonal principal 1')
-                only_one_queen = 1
+                if queens == 0:
+                    print (f'Nenhuma rainha na diagonal principal 1')
+                else:
+                    print (f'Mais de uma rainha na diagonal principal 1')
+                    only_one_queen = 1
 
             times += 1
         else:
@@ -146,8 +163,11 @@ def checking_queen(chessboard):
             if queens == 1:
                 print(f'Apenas uma rainha na diagonal principal {times}')
             else:
-                print (f'Nenhuma ou mais de uma rainha na diagonal principal {times}')
-                only_one_queen = 1
+                if queens == 0:
+                    print (f'Nenhuma uma rainha na diagonal principal {times}')
+                else:
+                    print (f'Mais de uma rainha na diagonal principal {times}')
+                    only_one_queen = 1
             
             times += 1
 
@@ -172,8 +192,11 @@ def checking_queen(chessboard):
             if queens == 1:
                 print(f'Apenas uma rainha na diagonal principal {column_j + 8}')
             else:
-                print (f'Nenhuma ou mais de uma rainha na diagonal principal {column_j + 8}')
-                only_one_queen = 1
+                if queens == 0:
+                    print (f'Nenhuma  rainha na diagonal principal {column_j + 8}')
+                else:
+                    print (f'Mais de uma rainha na diagonal principal {column_j + 8}')
+                    only_one_queen = 1
 
             times -= 1
 
