@@ -1,8 +1,13 @@
+# FEITO
 #  criação tabuleiro
 #  criar teste de ataques
 #  criar algoritmo de distribuição aleatória
 #    checar condição de parada
+# Fazer somatório de conflitos de cada configuração (em situação de mais de uma rainha por linha/coluna/diagonal: somar número de rainhas. 
+# Ao fim, somar os totais parciais. Cada configuração vai ter um total de conflitos)
 
+# FALTA
+# Automatizar criação de configurações de tabuleiro
 # Ao receber validated = 0, gravar o chessboard como está no momento.
 #    Comparar com chessboards já gravados antes. Se estiver igual a um anterior, ignorar. Se for diferente, salvar nas configurações
 #    inéditas do tabuleiro
@@ -26,7 +31,8 @@ def print_chessboard(chessboard):
 
 def checking_queen(chessboard):
     n = len(chessboard)
-    only_one_queen = 0                              # 0: true, 1: false
+    # only_one_queen = 0                              # 0: true, 1: false
+    conflicts = 0
 
     #  validação de 1 rainha por linha
     for line in range (0, n):         
@@ -38,7 +44,8 @@ def checking_queen(chessboard):
                 print (f'Nenhuma rainha na linha {line+1}')
             else:
                 print (f'Mais de uma rainha na linha {line+1}')
-                only_one_queen = 1
+                # only_one_queen = 1
+                conflicts += queens
             
     # validação de 1 rainha por coluna
     for column in range (0, n):       
@@ -54,7 +61,8 @@ def checking_queen(chessboard):
                 print (f'Nenhuma rainha na coluna {column+1}')
             else:
                 print (f'Mais de uma rainha na coluna {column+1}')
-                only_one_queen = 1
+                # only_one_queen = 1
+                conflicts += queens
             
     
     diagonal_list = []
@@ -73,7 +81,8 @@ def checking_queen(chessboard):
                     print (f'Nenhuma rainha na diagonal {d+1}')
                 else:
                     print (f'Mais de uma rainha na diagonal {d+1}')
-                    only_one_queen = 1
+                    # only_one_queen = 1
+                    conflicts += queens
         else:
             diagonal = []
             j = 0
@@ -97,7 +106,8 @@ def checking_queen(chessboard):
                     print (f'Nenhuma rainha na diagonal {d+1}')
                 else:
                     print (f'Mais de uma rainha na diagonal {d+1}')
-                    only_one_queen = 1
+                    # only_one_queen = 1
+                    conflicts += queens
 
     # continuação da validação de 1 rainha por diagonal secundária
     # segundo loop, apenas na última linha
@@ -120,7 +130,8 @@ def checking_queen(chessboard):
                     print (f'Nenhuma rainha na diagonal secundária {column_j + line + 1}')
                 else:
                     print (f'Mais de uma rainha na diagonal secundária {column_j + line + 1}')
-                    only_one_queen = 1
+                    # only_one_queen = 1
+                    conflicts += queens
 
 
     diagonal_list_main = []
@@ -141,7 +152,8 @@ def checking_queen(chessboard):
                     print (f'Nenhuma rainha na diagonal principal 1')
                 else:
                     print (f'Mais de uma rainha na diagonal principal 1')
-                    only_one_queen = 1
+                    # only_one_queen = 1
+                    conflicts += queens
 
             times += 1
         else:
@@ -167,7 +179,8 @@ def checking_queen(chessboard):
                     print (f'Nenhuma uma rainha na diagonal principal {times}')
                 else:
                     print (f'Mais de uma rainha na diagonal principal {times}')
-                    only_one_queen = 1
+                    # only_one_queen = 1
+                    conflicts += queens
             
             times += 1
 
@@ -196,17 +209,14 @@ def checking_queen(chessboard):
                     print (f'Nenhuma  rainha na diagonal principal {column_j + 8}')
                 else:
                     print (f'Mais de uma rainha na diagonal principal {column_j + 8}')
-                    only_one_queen = 1
+                    # only_one_queen = 1
+                    conflicts += queens
 
             times -= 1
 
 
-    return only_one_queen 
+    return conflicts
         
-
-
-
-
 def sum_check(line_column_diagonal):
     sum = 0
 
@@ -215,16 +225,18 @@ def sum_check(line_column_diagonal):
     
     return sum
 
+
+
 # Apresentando chessboard
 chessboard = chessboard()
 
 # Imprimindo chessboard
 print_chessboard(chessboard)
 
-# Testes de validação
-validated = checking_queen(chessboard)          # 0: true, 1: false
+# Número de conflitos
+conflicts = checking_queen(chessboard)          
 
-if validated == 0:
-    print("Solução de configuração de tabuleiro para questão das 8 rainhas")
+if conflicts == 0:
+    print(f"\nConflitos: {conflicts}\nSolução de configuração de tabuleiro para questão das 8 rainhas")
 else:
-    print("Não é uma solução de configuração de tabuleiro")
+    print(f"\nConflitos: {conflicts}\nNão é uma solução de configuração de tabuleiro")
